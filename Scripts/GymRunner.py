@@ -12,7 +12,6 @@ class GymRunner():
     TODO:
         self.LEARNING_EPISODE_COUNTER не работает
         добавить сохрание модели
-
     """
 
     ENV_NAME = ""

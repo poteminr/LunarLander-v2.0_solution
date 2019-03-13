@@ -5,8 +5,8 @@ import numpy as np
 
 """
     PS : {'action_space': 4, 'observation_space': (8,)}
-    
 """
+
 
 class SimpleNet(nn.Module):
     def __init__(self, ALPHA, INPUT_SHAPE, OUTPUT_SHAPE):
@@ -21,7 +21,7 @@ class SimpleNet(nn.Module):
             nn.ReLU(),
             nn.Linear(64, OUTPUT_SHAPE),
         )
-# Потестить на sgd(но хз, труднее брать производную)
+
         self.optimizer = optim.Adam(self.parameters(), lr=self.ALPHA) # Tune this
 
         self.loss = nn.MSELoss()
