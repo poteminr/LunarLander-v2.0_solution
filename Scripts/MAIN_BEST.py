@@ -1,6 +1,7 @@
 from MemoryClasses import *
 from AgentClasses import *
 from GymRunner import GymRunner
+from PolicyClasses import *
 import TorchModelClasses as models
 import numpy as np
 """
@@ -12,7 +13,7 @@ TODO:
 ENV_NAME = "LunarLander-v2"
 OBS_SPACE = 8
 ACTION_SPACE = 4
- 
+
 AGENT = DQN_agent
 MEMORY = MemoryNumpy
 MODEL = models.HuberNet
@@ -20,23 +21,24 @@ SEED = 228
 
 def kostil(reward):
     return (
-        reward == 100 or 
-        reward == -100 or 
-        reward == 10 or 
+        reward == 100 or
+        reward == -100 or
+        reward == 10 or
         reward == 200
         )
 
 def main():
     agent = AGENT(
-        MODEL, 
+        MODEL,
         MEMORY,
+        BasePolicy(
+            eps=1.0,
+            min_eps=0.05,
+            eps_delta=0.0996,
+            action_space = ACTION_SPACE
+        ),
         gamma=0.99,
-
-        epsilon=1, 
-        eps_end=0.05, 
-        eps_delta=0.996,
-
-        alpha=1e-3, 
+        alpha=1e-3,
         maxMemorySize=15000,
         tau=1e-3,
         action_space=ACTION_SPACE,
@@ -53,7 +55,7 @@ def main():
     print("Заполнение памяти случайными действиями завершено")
 
     gR.fit(
-        agent, 
+        agent,
         n_iters = 5000,
         batch_size=64,
         LEARN_FREQ=2,
