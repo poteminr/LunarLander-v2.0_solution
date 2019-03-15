@@ -1,15 +1,15 @@
 #! /bin/bash
 
-1="OpenAi";
+ENV="OpenAi";
 
 
-ENVS=$(conda env list | awk '{print $1}' )
-if [[ $ENVS = *"$1"* ]]; then
-   source activate $1
+ENVS=$(conda env list | awk '{print $ENV}' )
+if [[ $ENVS = *"$ENV"* ]]; then
+   source activate $ENV
 else 
    echo "INSTALLING"
    conda env create -f environment.yml
-   source activate $1
+   source activate $ENV
    pip install -r requirements.txt
 fi;
 
