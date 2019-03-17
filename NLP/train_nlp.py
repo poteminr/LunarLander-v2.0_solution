@@ -72,5 +72,3 @@ def stemming(token_list):
     return stemmed_list
 
 dataset.question_text = dataset.question_text.apply(lambda x:stemming(x))
-
-# здесь препроцессинг все.окончен
