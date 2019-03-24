@@ -111,4 +111,4 @@ class HuberNet(nn.Module):
 
 ## Наилучший результат - 231 итерация.
 
-### ./Scripts/MAIN_BEST.py 
+### ./Scripts/MAIN.py 
