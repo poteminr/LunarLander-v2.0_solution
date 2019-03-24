@@ -110,5 +110,5 @@ class HuberNet(nn.Module):
 ![alt](https://github.com/furfa/LunarLander-v2-Solve/blob/master/img/231.jpg)
 
 ## Наилучший результат - 231 итерация.
-
+## RUN this:
 ### ./Scripts/MAIN.py 
